@@ -120,6 +120,88 @@
           }
         }
       }
+    },
+    "ardui": {
+      "projectType": "library",
+      "root": "libs/ardui",
+      "sourceRoot": "libs/ardui/src",
+      "prefix": "aadrian",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/ardui"],
+          "options": {
+            "jestConfig": "libs/ardui/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/ardui/src/**/*.ts",
+              "libs/ardui/src/**/*.html"
+            ]
+          }
+        },
+        "storybook": {
+          "builder": "@nrwl/storybook:storybook",
+          "options": {
+            "uiFramework": "@storybook/angular",
+            "port": 4400,
+            "config": {
+              "configFolder": "libs/ardui/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        },
+        "build-storybook": {
+          "builder": "@nrwl/storybook:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "uiFramework": "@storybook/angular",
+            "outputPath": "dist/storybook/ardui",
+            "config": {
+              "configFolder": "libs/ardui/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        }
+      }
+    },
+    "ardui-e2e": {
+      "root": "apps/ardui-e2e",
+      "sourceRoot": "apps/ardui-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/ardui-e2e/cypress.json",
+            "devServerTarget": "ardui:storybook"
+          },
+          "configurations": {
+            "ci": {
+              "devServerTarget": "ardui:storybook:ci"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/ardui-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
     }
   },
   "cli": {
