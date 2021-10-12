@@ -7,7 +7,7 @@ export default {
   decorators: [
     moduleMetadata({
       imports: [],
-    })
+    }),
   ],
 } as Meta<LabelComponent>;
 
@@ -16,7 +16,12 @@ const Template: Story<LabelComponent> = (args: LabelComponent) => ({
   props: args,
 });
 
-
 export const Primary = Template.bind({});
 Primary.args = {
-}
+  text: 'Label',
+};
+
+export const Secondary = Template.bind({});
+Secondary.args = {
+  text: 'Example',
+};

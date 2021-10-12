@@ -36,6 +36,9 @@
     "anymicrob": {
       "tags": []
     },
+    "anymicrob-api": {
+      "tags": []
+    },
     "anymicrob-e2e": {
       "tags": [],
       "implicitDependencies": ["anymicrob"]

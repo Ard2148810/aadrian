@@ -1,3 +1,7 @@
 <div>
-  <aadrian-label></aadrian-label>
+  <aadrian-label
+    *ngIf="text | async as _text"
+    [text]="_text.message"
+  ></aadrian-label>
+  <aadrian-label [text]="wsText"></aadrian-label>
 </div>

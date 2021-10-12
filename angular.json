@@ -94,6 +94,57 @@
         }
       }
     },
+    "anymicrob-api": {
+      "root": "apps/anymicrob-api",
+      "sourceRoot": "apps/anymicrob-api/src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/anymicrob-api",
+            "main": "apps/anymicrob-api/src/main.ts",
+            "tsConfig": "apps/anymicrob-api/tsconfig.app.json",
+            "assets": ["apps/anymicrob-api/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/anymicrob-api/src/environments/environment.ts",
+                  "with": "apps/anymicrob-api/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "anymicrob-api:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/anymicrob-api/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/anymicrob-api"],
+          "options": {
+            "jestConfig": "apps/anymicrob-api/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "anymicrob-e2e": {
       "root": "apps/anymicrob-e2e",
       "sourceRoot": "apps/anymicrob-e2e/src",

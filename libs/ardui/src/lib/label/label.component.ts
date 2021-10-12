@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 
 @Component({
   selector: 'aadrian-label',
@@ -6,4 +6,6 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./label.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LabelComponent {}
+export class LabelComponent {
+  @Input() text = '';
+}
