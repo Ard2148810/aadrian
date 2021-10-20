@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+
+.container {
+  font-family: 'Open Sans', Helvetica, 'Segoe UI', Arial, sans-serif;
+  font-size: 1em;
+  font-weight: 400;
+  display: inline-block;
+  &:hover {
+    cursor: pointer;
+    .overlay {
+      bottom: 0%;
+    }
+  }
+}
+
+.text {
+  color: #ffffff;
+  position: relative;
+  z-index: 902;
+}
+
+.background {
+  background-color: #00005e;
+  border-radius: 1000px;
+  position: relative;
+  overflow: hidden;
+  padding: 4px 18px;
+  z-index: 901;
+}
+
+.overlay {
+  z-index: 900;
+  position: absolute;
+  background-color: #000000;
+  color: rgba($color: #000000, $alpha: 0);
+  bottom: 100%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  transition: bottom linear 200ms;
+}
